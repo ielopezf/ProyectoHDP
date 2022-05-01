@@ -23,7 +23,10 @@ public class Usuario implements Serializable {
     private String telefono;
     private String direccion;
     private String email;
-    private int rol;
+
+    @OneToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
     private String contrasena;
     private LocalDateTime fecha_creacion;
 

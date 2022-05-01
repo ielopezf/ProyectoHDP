@@ -18,6 +18,12 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "select u from Usuario u where u.carnet LIKE %:filtro% or u.id LIKE %:filtro%")
     Usuario searchUser (@Param("filtro") String filtros);
 
+
+
+    @Query(value = "select u from Usuario u where u.carnet LIKE %:filtro% or u.id LIKE %:filtro% AND u.rol = 2")
+    Usuario buscarDocentePorIdOCarnet (@Param("filtro") String filtros);
+
+
     @Query(value = "select u from Usuario u where u.rol = 2")
     List<Object> docentes ();
 

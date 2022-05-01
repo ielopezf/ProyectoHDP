@@ -1,8 +1,10 @@
-package com.Grupo02HDP.GestionNotas.service;
+package com.Grupo02HDP.GestionNotas.controllers;
 
 
 import com.Grupo02HDP.GestionNotas.models.Response;
+import com.Grupo02HDP.GestionNotas.models.Rol;
 import com.Grupo02HDP.GestionNotas.models.Usuario;
+import com.Grupo02HDP.GestionNotas.repositories.RolRepository;
 import com.Grupo02HDP.GestionNotas.repositories.UsuarioRepository;
 import com.Grupo02HDP.GestionNotas.utils.JWTUtil;
 import com.Grupo02HDP.GestionNotas.utils.NumberValidation;
@@ -23,6 +25,9 @@ public class AuthController {
     private UsuarioRepository userRepository;
     @Autowired
     private JWTUtil jwtUtil;
+
+    @Autowired
+    private RolRepository rol;
 
 
     private Response response;
@@ -72,7 +77,6 @@ public class AuthController {
             if (stringValidation.validateAlphanumeric(user.getCarnet(), 40)) {
                 if (stringValidation.validateEmail(user.getEmail())) {
                     if (stringValidation.validatePassword(user.getContrasena())) {
-                        user.setRol(3);
                         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
                         String hash = argon2.hash(1, 1024, 1, user.getContrasena());
                         user.setContrasena(hash);

@@ -1,4 +1,4 @@
-package com.Grupo02HDP.GestionNotas.service;
+package com.Grupo02HDP.GestionNotas.controllers;
 
 import com.Grupo02HDP.GestionNotas.models.Response;
 import com.Grupo02HDP.GestionNotas.models.Usuario;
@@ -53,7 +53,7 @@ public class UsuarioController {
                 response.setStatus(true);
                 String mensaje = "Usuario " + usuario.getCarnet() + " encontrado exitosamente.";
                 response.setMessage(mensaje);
-            }else{
+            } else {
                 response.setStatus(false);
                 response.setMessage("Usuario no encontrado verifique informacion!");
             }
@@ -61,17 +61,6 @@ public class UsuarioController {
         return response;
     }
 
-    @GetMapping("/getDocentes")
-    public Response getDocentes(@RequestHeader(value = "Authorization") String token){
-        initializeResponse();
-        if (!validateToken.validateToken(token)) {
-            response.setException("Unauthorized access.");
-        } else {
-            response.setDataset(usuarioRepository.docentes());
-            response.setStatus(true);
-        }
-        return response;
-    }
 
 
     ////////////////////////////////////////////////////GENERALES////////////////////////////////////
@@ -244,7 +233,7 @@ public class UsuarioController {
         if (!validateToken.validateToken(token)) {
             response.setException("Unauthorized access.");
         } else {
-            if (validateToken.userDB().getRol() == 1) {
+            if (validateToken.userDB().getRol().getId() == 1) {
                 if (usuarioRepository.existsById(id)) {
                     Usuario user = usuarioRepository.findById(id).get();
                     Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
