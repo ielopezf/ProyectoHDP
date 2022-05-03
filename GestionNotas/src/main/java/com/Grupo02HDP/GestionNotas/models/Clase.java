@@ -1,26 +1,27 @@
 package com.Grupo02HDP.GestionNotas.models;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name= "materia")
-public class Materia {
-
+@Table( name= "clases")
+public class Clase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String codigo;
-    private String nombre;
-    private int matricula;
-    private int estado;
-    private LocalDateTime fecha_creacion;
+    private int grupo;
 
+    private String horario;
+
+    private Long materia;
+
+    private int ciclo;
+
+    private String anio;
 
 }
