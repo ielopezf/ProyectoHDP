@@ -15,7 +15,9 @@ import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 @RestController
@@ -104,9 +106,19 @@ public class AuthController {
         return response;
     }
 
+
+
+
+
+
     public void initializeResponse() {
         this.response = new Response();
     }
+
+
+
+
+
 }
 
 
