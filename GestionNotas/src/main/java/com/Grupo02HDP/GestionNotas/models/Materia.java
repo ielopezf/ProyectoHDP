@@ -19,6 +19,7 @@ public class Materia {
     private String codigo;
     private String nombre;
     private int matricula;
+    private int docente;
     private int estado;
     private LocalDateTime fecha_creacion;
 
