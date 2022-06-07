@@ -16,12 +16,13 @@ public class Clase implements Serializable {
 
     private int grupo;
 
-    private String horario;
+    private int horario;
 
-    private Long materia;
+    private int materia;
+
+    private int docente;
 
     private int ciclo;
 
-    private String anio;
 
 }

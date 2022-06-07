@@ -6,21 +6,16 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name= "grupo")
+@Table(name = "grupos")
 public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String codigo;
+    private String codigo ;
+    private int  docente;
+    private int  materia;
 
-    @ManyToOne
-    @JoinColumn(name = "materia_id")
-    private Materia materia;
-
-    @ManyToOne
-    @JoinColumn(name = "docente_id")
-    private Usuario docente;
 
 }

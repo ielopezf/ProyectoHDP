@@ -1,5 +1,6 @@
 package com.Grupo02HDP.GestionNotas.repositories;
 
+//import com.Grupo02HDP.GestionNotas.models.Grupo;
 import com.Grupo02HDP.GestionNotas.models.Grupo;
 import com.Grupo02HDP.GestionNotas.models.Materia;
 import org.springframework.data.jpa.repository.JpaRepository;

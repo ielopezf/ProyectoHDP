@@ -77,16 +77,20 @@ public class AuthController {
             if (stringValidation.validateAlphanumeric(user.getCarnet(), 40)) {
                 if (stringValidation.validateEmail(user.getEmail())) {
                     if (stringValidation.validatePassword(user.getContrasena())) {
-                        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-                        String hash = argon2.hash(1, 1024, 1, user.getContrasena());
-                        user.setContrasena(hash);
-                        try {
-                            userRepository.save(user);
-                            response.setStatus(true);
-                            response.setMessage("Registered successfully");
-                            response.setStatus(true);
-                        } catch (DataAccessException ex) {
-                            response.setException(SQLException.getException(String.valueOf(ex.getCause())));
+                        if(user.getCarnet() != null || user.getCarnet() != "" ){
+                            response.setMessage("Error el carnet debe ser unico");
+                        }else {
+                            Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+                            String hash = argon2.hash(1, 1024, 1, user.getContrasena());
+                            user.setContrasena(hash);
+                            try {
+                                userRepository.save(user);
+                                response.setStatus(true);
+                                response.setMessage("Registered successfully");
+                                response.setStatus(true);
+                            } catch (DataAccessException ex) {
+                                response.setException(SQLException.getException(String.valueOf(ex.getCause())));
+                            }
                         }
                     } else {
                         response.setException("Invalid password. Please check that your password satisfies all the requirements.");

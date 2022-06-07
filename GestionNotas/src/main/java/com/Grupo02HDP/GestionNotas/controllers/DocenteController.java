@@ -141,18 +141,13 @@ public class DocenteController {
         return response;
     }
 
-    @PostMapping("/crearClases")
+    @PostMapping("/crearClaseX")
     public Response crearClases(@RequestHeader(value = "Authorization") String token, @RequestBody Clase clase) {
         initializeResponse();
         if (!validateToken.validateToken(token)) {
             response.setException("Unauthorized access.");
         } else {
 
-            Grupo grupo = grupoRepository.getById((long) clase.getGrupo());
-            Materia materia = materiaRepository.getById(clase.getMateria());
-            grupo.setMateria(materia);
-            Usuario docente = validateToken.userDB();
-            grupo.setDocente(docente);
 
            claseRepository.save(clase);
            response.setStatus(true);
