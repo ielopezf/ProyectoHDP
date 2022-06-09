@@ -2,14 +2,10 @@ package com.Grupo02HDP.GestionNotas.controllers;
 
 import com.Grupo02HDP.GestionNotas.models.Materia;
 import com.Grupo02HDP.GestionNotas.models.Response;
-import com.Grupo02HDP.GestionNotas.models.Usuario;
 import com.Grupo02HDP.GestionNotas.repositories.MateriaRepository;
 import com.Grupo02HDP.GestionNotas.utils.NumberValidation;
-import com.Grupo02HDP.GestionNotas.utils.SQLException;
 import com.Grupo02HDP.GestionNotas.utils.StringValidation;
 import com.Grupo02HDP.GestionNotas.utils.ValidateToken;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +14,7 @@ import java.util.Collections;
 
 @RestController
 @RequestMapping(value = "/apis/MateriaController")
-public class MateriaOntroller {
+public class MateriaController {
 
     private Response response;
     @Autowired
