@@ -35,7 +35,16 @@ public class UsuarioController {
             response.setException("Unauthorized access.");
         } else {
             Usuario userLoggin = validateToken.userDB();
-            response.getDataset().add(userLoggin);
+            Usuario user = new Usuario();
+            user.setId(userLoggin.getId());
+            user.setNombre(userLoggin.getNombre());
+            user.setCarnet(userLoggin.getCarnet());
+            user.setRol(userLoggin.getRol());
+            user.setTelefono(userLoggin.getTelefono());
+            user.setEmail(userLoggin.getEmail());
+            user.setDireccion(userLoggin.getDireccion());
+            response.getDataset().add(user);
+            response.setStatus(true);
 
         }
         return response;
