@@ -19,4 +19,8 @@ public class AsistenciaDTO implements Serializable {
 
     private  String nombre_alumn;
 
+    private int horario;
+
+    private int grupo;
+
 }

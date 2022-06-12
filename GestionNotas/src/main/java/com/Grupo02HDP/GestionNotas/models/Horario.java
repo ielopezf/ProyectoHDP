@@ -6,15 +6,12 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "asistencia")
-public class Asistencia {
+@Table(name = "horario")
+public class Horario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private int materia;
-    private int grupo;
-    private String alumno;
-    private int horario;
+   private String descripcion;
 }

@@ -19,4 +19,7 @@ public interface GrupoRepository extends JpaRepository<Grupo, Long> {
 
     @Query(value = "Select g , u.carnet, u.nombre from Grupo g, Usuario u where u.id = :id_docente and g.docente = u.id")
     List<Object> grupoxDocenteId(Long id_docente);
+
+    @Query(value = "select id from Grupo where id = :id_grupo")
+    int getId(int id_grupo);
 }
