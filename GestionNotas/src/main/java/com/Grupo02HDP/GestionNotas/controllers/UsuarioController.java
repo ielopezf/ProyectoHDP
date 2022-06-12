@@ -74,7 +74,7 @@ public class UsuarioController {
 
     ////////////////////////////////////////////////////GENERALES////////////////////////////////////
     @GetMapping("/getUsuario")
-    public Response getUsuario(@RequestHeader(value = "Authorization") String token, @RequestParam(name = "id") Long id) {
+    public Response getUsuario(@RequestHeader(value = "Authorization") String token,@RequestParam(name = "id") Long id) {
         initializeResponse();
         if (!validateToken.validateToken(token)) {
             response.setException("Acceso no autorizado");
@@ -84,8 +84,10 @@ public class UsuarioController {
                 response.getDataset().add(user);
                 response.setStatus(true);
             } else {
+
                 response.setException("El usuario no existe");
             }
+
         }
         return response;
     }

@@ -99,7 +99,7 @@ public class MateriaController {
         if (!validateToken.validateToken(token)) {
             response.setException("Unauthorized access.");
         } else {
-            response.setDataset(Collections.singletonList(materiaRepository.findAll()));
+            response.setDataset(Collections.singletonList(materiaRepository.getMaterias()));
             response.setStatus(true);
         }
         return response;

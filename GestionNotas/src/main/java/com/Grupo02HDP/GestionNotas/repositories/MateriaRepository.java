@@ -19,6 +19,9 @@ public interface MateriaRepository extends JpaRepository<Materia, Long> {
     @Query(value = "Select m.codigo, m.nombre, u.carnet, u.nombre from Materia m, Usuario u where m.docente = u.id")
     List<Object> materiaxDocente();
 
+    @Query(value = "select m.* from materia m ", nativeQuery = true)
+   List<Object> getMaterias();
+
     @Query(value = "Select m.codigo, m.nombre, u.carnet, u.nombre from Materia m, Usuario u where u.id = :id_docente and m.docente = u.id")
     List<Object> materiaxDocenteId(Long id_docente);
 
