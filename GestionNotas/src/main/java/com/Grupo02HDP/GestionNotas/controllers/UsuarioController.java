@@ -244,7 +244,7 @@ public class UsuarioController {
         if (!validateToken.validateToken(token)) {
             response.setException("Unauthorized access.");
         } else {
-            if (validateToken.userDB().getRol().getId() == 1) {
+            if (validateToken.userDB().getRol() == 1) {
                 if (usuarioRepository.existsById(id)) {
                     Usuario user = usuarioRepository.findById(id).get();
                     Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);

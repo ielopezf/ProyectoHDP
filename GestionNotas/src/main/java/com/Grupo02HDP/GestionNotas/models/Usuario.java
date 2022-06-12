@@ -18,15 +18,13 @@ public class Usuario implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+
     private String carnet;
     private String nombre;
     private String telefono;
     private String direccion;
     private String email;
-
-    @OneToOne
-    @JoinColumn(name = "rol_id")
-    private Rol rol;
+    private int rol;
     private String contrasena;
     private LocalDateTime fecha_creacion;
 

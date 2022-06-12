@@ -3,18 +3,20 @@ package com.Grupo02HDP.GestionNotas.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name = "asistencia")
-public class Asistencia {
+public class AsistenciaDTO implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String codigo;
 
-    private int materia;
-    private int grupo;
-    private int alumno;
-    private int horario;
+    private String nombre;
+
+    private  String carnet;
+
+    private  String nombre_alumn;
+
 }
