@@ -43,7 +43,8 @@ public class AsistenciaController   {
             response.setException("Unauthorized access.");
         } else {
             Usuario userLoggin = validateToken.userDB();
-           List<AsistenciaDTO> materiaxDocente = materiaRepository.materiaxDocenteId(userLoggin.getId());
+            int idDocente = Math.toIntExact(userLoggin.getId());
+           List<AsistenciaDTO> materiaxDocente = materiaRepository.materiaxDocenteId((long) idDocente);
             List<AsistenciaDTO> materiaxAlumno = materiaRepository.materiaxDocenteId((long) id);
 
             for(int i = 0; i < materiaxAlumno.size(); i++){
@@ -82,6 +83,18 @@ public class AsistenciaController   {
             response.setException("Unauthorized access.");
         } else {
             response.setDataset(Collections.singletonList(asistenciaRepository.AsistenciaXAlumnoGrupo(id)));
+            response.setStatus(true);
+        }
+        return response;
+    }
+
+    @GetMapping("/AsistenciaXIdMateria")
+    public Response AsistenciaXIdMateria(@RequestHeader(value = "Authorization") String token, @RequestParam(value="id") int id ) {
+        initializeResponse();
+        if (!validateToken.validateToken(token)) {
+            response.setException("Unauthorized access.");
+        } else {
+            response.setDataset(Collections.singletonList(asistenciaRepository.AsistenciaXIdMateria(id)));
             response.setStatus(true);
         }
         return response;
