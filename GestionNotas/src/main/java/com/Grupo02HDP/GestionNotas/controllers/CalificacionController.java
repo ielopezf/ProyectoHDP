@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 @RestController
-@RequestMapping(value = "/apis/ClaseController")
+@RequestMapping(value = "/apis/calificacionController")
 public class CalificacionController {
 
         private Response response;
@@ -64,8 +64,22 @@ public class CalificacionController {
             return response;
         }
 
+    @GetMapping("/getCalificacionXMateriaId")
+    public Response getCalificacionXMateriaId(@RequestHeader(value = "Authorization") String token, @RequestParam(value="id") int id ) {
+        initializeResponse();
+        if (!validateToken.validateToken(token)) {
+            response.setException("Unauthorized access.");
+        } else {
+            response.setDataset(Collections.singletonList(calificacionRespository.getCalificacionXMateria(id)));
+            response.setStatus(true);
+        }
+        return response;
+    }
 
-        @GetMapping("/getCalificaciones")
+
+
+
+    @GetMapping("/getCalificaciones")
         public Response getCalificaciones(@RequestHeader(value = "Authorization") String token) {
             initializeResponse();
             if (!validateToken.validateToken(token)) {
