@@ -23,7 +23,7 @@ public interface MateriaRepository extends JpaRepository<Materia, Long> {
     @Query(value = "select m.* from materia m ", nativeQuery = true)
    List<Object> getMaterias();
 
-    @Query(value = "Select m.codigo as codigo, m.nombre as nombre, u.carnet as carnet , u.nombre as nombre_alumn h.id as horario, g.id as grupo from Horario h, Grupo g, Materia m, Usuario u where u.id = :id_docente and m.docente = u.id")
+    @Query(value = "Select m.codigo as codigo, m.nombre as nombre, u.carnet as carnet , u.nombre as nombre_alumn ,h.id as horario, g.id as grupo from Horario h, Grupo g, Materia m, Usuario u where u.id = :id_docente and m.docente = u.id")
     List<AsistenciaDTO> materiaxDocenteId(Long id_docente);
 
     @Query(value = "Select id from Materia where codigo = :codigo")
